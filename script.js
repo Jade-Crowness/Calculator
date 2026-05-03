@@ -105,6 +105,7 @@ buttons.forEach(function (button) {
                     lowerScreen.textContent = '0';
                 } else {
                     lowerScreen.textContent = lowerScreen.textContent.slice(0, -1);
+                    firstInputNumber = lowerScreen.textContent;
                 }
             } else if (buttonClicked == '.') {
                 if (lowerScreen.textContent.includes('.')) {
@@ -116,10 +117,15 @@ buttons.forEach(function (button) {
                 lowerScreen.textContent = Number(lowerScreen.textContent) / 100;
             }
         } else if (numbers.includes(buttonClicked)) {
-            if (lowerScreen.textContent == '0') {
-                lowerScreen.textContent = buttonClicked
+            if (firstInputNumber === null) {
+                lowerScreen.textContent = buttonClicked;
+                firstInputNumber = lowerScreen.textContent;
             } else {
-                lowerScreen.textContent = lowerScreen.textContent + buttonClicked;
+                if (lowerScreen.textContent == "0") {
+                    lowerScreen.textContent = buttonClicked;
+                } else {
+                    lowerScreen.textContent = lowerScreen.textContent + buttonClicked;
+                }
             }
         }
     })
